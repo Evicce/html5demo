@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style type="text/css">
+        img {width: 200px;height: 200px;position: absolute;}
+        .container {width: 500px;height: 500px;position: absolute;margin: 0 auto;transform-style: preserve-3d;transform: rotateZ(45deg) rotateX(45deg);}
+        img:nth-child(1) {/*后面*/transform: translateZ(-100px) rotateX(180deg);}
+        img:nth-child(2) {/*左面*/transform: translateX(-100px) rotateY(-90deg);}
+        img:nth-child(3) {/*右面*/transform: translateX(100px) rotateY(90deg);}
+        img:nth-child(4) {/*上面*/transform: translateY(-100px) rotateX(90deg);}
+        img:nth-child(5) {/*下面*/transform: translateY(100px) rotateX(-90deg);}
+        img:nth-child(6) {/*前面*/transform: translateZ(100px);}
+        .stage {position: relative;width: 200px;margin: 0 auto;transform-style: preserve-3d;-webkit-animation: myanimation 2s linear both infinite;}
+        @-webkit-keyframes myanimation {
+            to {
+                transform: rotateY(360deg);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="stage">
+            <img src="head.jpg" />
+            <img src="head.jpg" />
+            <img src="head.jpg" />
+            <img src="head.jpg" />
+            <img src="head.jpg" />
+            <img src="head.jpg" />
+
+        </div>
+
+    </div>
+</body>
+
+</html>

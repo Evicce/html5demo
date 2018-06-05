@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var amount = prompt('输入购买足球数量', 0);
+        if (amount > 30)
+            var price = 0.8 * amount;
+        else if (amount > 20)
+            var price = 0.85 * amount;
+        else if (amount > 10)
+            var price = 0.9 * amount;
+        else
+            var price = 1 * amount;
+        var sum_price = price * 108.2;
+        document.write('应付金额：' + sum_price);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

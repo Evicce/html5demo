@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>clock</title>
+    <style type="text/css">
+        .clock {
+            width: 500px;
+            height: 500px;
+            border: 8px solid gray;
+            border-radius: 50%;
+            position: relative;
+            margin: 100px auto;
+        }
+
+        .line {
+            width: 4px;
+            height: 500px;
+            background: #ccc;
+            position: absolute;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .line1 {
+            transform: rotate(30deg);
+        }
+
+        .line2 {
+            transform: rotate(60deg);
+        }
+
+        .line3 {
+            transform: rotate(90deg);
+        }
+
+        .line4 {
+            transform: rotate(120deg);
+        }
+
+        .line5 {
+            transform: rotate(150deg);
+        }
+
+        .line6 {
+            transform: rotate(180deg);
+        }
+
+        .hour {
+            width: 6px;
+            height: 120px;
+            background: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -110px;
+            animation: move 43200s linear infinite;
+            transform-origin: 3px 110px;
+        }
+
+        .minute {
+            width: 4px;
+            height: 160px;
+            background: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -150px;
+            animation: move 3600s linear infinite;
+            transform-origin: 2px 150px;
+        }
+
+        .second {
+            width: 2px;
+            height: 200px;
+            background: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -190px;
+            animation: move 60s infinite steps(60);
+            transform-origin: 1px 190px;
+        }
+
+        .circle {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        .mask {
+            width: 460px;
+            height: 460px;
+            background: #fff;
+            border-radius: 230px;
+            position: absolute;
+            margin: 20px
+        }
+
+        @keyframes move {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div class="line line4"></div>
+        <div class="line line5"></div>
+        <div class="line line6"></div>
+        <div class="mask"></div>
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+    </div>
+</body>
+
+</html>

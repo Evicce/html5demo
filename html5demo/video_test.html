@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #progress {
+            width: 1000px;
+        }
+
+        #myVideo {
+            width: 1000px;
+        }
+    </style>
+    <script>
+        var myVideo, btn, progress, lblStart, lblEnd, mousedown = false;
+        window.onload = function () {
+            myVideo = document.querySelector('#myVideo');
+            btn = document.querySelector('#btn');
+            progress = document.querySelector('#progress');
+            lblStart = document.querySelector('#lblStart');
+            lblEnd = document.querySelector('#lblEnd');
+            setLabel(myVideo.duration, lblEnd);
+            setLabel(0, lblStart);
+            window.onmouseup = function () {
+                mousedown = false;
+            };
+            progress.onmousedown = function () {
+                mousedown = true;
+            };
+            btn.addEventListener('click', function () {
+                if (myVideo.paused == true) {
+                    myVideo.play();
+                    btn.innerText = 'pause';
+                }
+                else {
+                    myVideo.pause();
+                    btn.innerText = 'play';
+                }
+            });
+            myVideo.addEventListener('timeupdate', function () {
+                if (mousedown == false) {
+                    progress.value = progress.max * myVideo.currentTime / myVideo.duration;
+                    setLabel(myVideo.currentTime, lblStart);
+                }
+            });
+            progress.onchange = function () {
+                myVideo.currentTime = myVideo.duration * progress.value / progress.max;
+            };
+            function setLabel(time, label) {
+                var minite = parseInt(time / 60);
+                var second = parseInt(time % 60);
+                if (second > 9) {
+                    label.innerText = minite + ':' + second;
+                }
+                else {
+                    label.innerText = minite + ':0' + second;
+                }
+            }
+        };
+
+    </script>
+</head>
+
+<body>
+    <video id="myVideo">
+        <source src="../source/学園侵触 ×× of the Dead 下巻.mp4" />
+    </video>
+    <br/>
+    <label id="lblStart"></label>
+    <input id="progress" type="range" min="0" max="1000" value="0" />
+    <label id="lblEnd"></label>
+    <br/>
+    <button id="btn">play</button>
+</body>
+
+</html>
