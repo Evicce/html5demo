@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #cvs {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #mask {
+            position: absolute;
+            background: rgba(127, 127, 127, 0.5);
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+        }
+
+        #btnSetting {
+            position: fixed;
+            right: 0;
+            top: 50%;
+
+        }
+    </style>
+    <script>
+        var cvs, ctx, mask, rangeWidth, rangeColor, btnSetting, btnCancel, btnConfirm;
+        window.onload = function () {
+            cvs = document.getElementById('cvs');
+            ctx = cvs.getContext('2d');
+            mask = document.getElementById('mask');
+            btnSetting = document.getElementById('btnSetting');
+            rangeWidth = document.getElementById('rangeWidth');
+            rangeColor = document.getElementById('rangeColor');
+            btnCancel = document.getElementById('btnCancel');
+            btnConfirm = document.getElementById('btnConfirm');
+            cvs.width = document.documentElement.clientWidth;
+            cvs.height = document.documentElement.clientHeight;
+            ctx.lineWidth = 5;
+            btnSetting.addEventListener('click', function () {
+                mask.style.display = 'block';
+            });
+            cvs.addEventListener('touchstart', function (e) {
+                ctx.moveTo(e.touches[0].clientX, e.touches[0].clientY);
+            });
+            cvs.addEventListener('touchmove', function (e) {
+                ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
+                ctx.stroke();
+            });
+            btnConfirm.addEventListener('click', function () {
+                ctx.lineWidth = rangeWidth.value;
+                ctx.strokeStyle = rangeColor.value;
+                mask.style.display = 'none';
+            });
+            btnCancel.addEventListener('click', function () {
+                mask.style.display = 'none';
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <canvas id="cvs"></canvas>
+    <button id="btnSetting">设置</button>
+    <div id="mask">
+        <input id="rangeWidth" type="range" min="1" max="50" value="5" />
+        <br/>
+        <input id="rangeColor" type="color" />
+        <button id="btnConfirm">确定</button>
+        <button id="btnCancel">取消</button>
+    </div>
+</body>
+
+</html>
