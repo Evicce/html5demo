@@ -30,6 +30,13 @@
             top: 50%;
 
         }
+
+        #list {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
     </style>
     <script>
         var cvs, ctx, mask, rangeWidth, rangeColor, btnSetting, btnCancel, btnConfirm;
@@ -44,11 +51,13 @@
             btnConfirm = document.getElementById('btnConfirm');
             cvs.width = document.documentElement.clientWidth;
             cvs.height = document.documentElement.clientHeight;
+
             ctx.lineWidth = 5;
             btnSetting.addEventListener('click', function () {
                 mask.style.display = 'block';
             });
             cvs.addEventListener('touchstart', function (e) {
+                ctx.beginPath();
                 ctx.moveTo(e.touches[0].clientX, e.touches[0].clientY);
             });
             cvs.addEventListener('touchmove', function (e) {
@@ -71,11 +80,13 @@
     <canvas id="cvs"></canvas>
     <button id="btnSetting">设置</button>
     <div id="mask">
-        <input id="rangeWidth" type="range" min="1" max="50" value="5" />
-        <br/>
-        <input id="rangeColor" type="color" />
-        <button id="btnConfirm">确定</button>
-        <button id="btnCancel">取消</button>
+        <div id="list">
+            <input id="rangeWidth" type="range" min="1" max="50" value="5" />
+            <br/>
+            <input id="rangeColor" type="color" />
+            <button id="btnConfirm">确定</button>
+            <button id="btnCancel">取消</button>
+        </div>
     </div>
 </body>
 
