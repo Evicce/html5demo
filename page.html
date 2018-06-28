@@ -13,13 +13,15 @@
         }
 
         .content {
-            padding: 0 15%;
+            margin: 0 15%;
+            vertical-align: middle;
         }
 
-        /* .painting {
-            height: 300px;
-            width: 350px;
-        } */
+        table{
+            margin: 0 auto;
+        }
+
+
     </style>
     <script>
         window.onload = function () {
@@ -31,7 +33,7 @@
             // }
             for (const painting of paintings) {
                 painting.style.height = height / 2 + 'px';
-                painting.style.width = width / 4.3 + 'px';
+                painting.style.width = width / 4.5 + 'px';
             }
         };
     </script>
