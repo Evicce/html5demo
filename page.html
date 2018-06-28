@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>陈逸飞画家作品展</title>
+
     <style type="text/css">
         .content h2 {
             text-align: center;
@@ -15,20 +16,34 @@
             padding: 0 15%;
         }
 
-        .painting img {
+        /* .painting {
             height: 300px;
             width: 350px;
-        }
+        } */
     </style>
+    <script>
+        window.onload = function () {
+            var paintings = document.getElementsByClassName('painting');
+            var height = document.body.clientHeight;
+            var width = document.body.clientWidth;
+            // for(i=0;i<paintings.length;i++){
+            //     paintings[i].style.height = height;
+            // }
+            for (const painting of paintings) {
+                painting.style.height = height / 2 + 'px';
+                painting.style.width = width / 4.3 + 'px';
+            }
+        };
+    </script>
 </head>
 
 <body>
     <div class="content">
         <h2>陈逸飞画家作品展</h2>
-        <table class="painting">
+        <table>
             <tr>
                 <td>
-                    <img class="painting" src="./source/cyf1.jpg">
+                    <img id="aaa" class="painting" src="./source/cyf1.jpg">
                 </td>
                 <td>
                     <img class="painting" src="./source/cyf2.jpg">
